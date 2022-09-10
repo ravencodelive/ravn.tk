@@ -17,4 +17,5 @@ server.get('/:path', (req, res) => {
 });
 
 server.get('/', (req, res) => res.status(200).send('OK'));
+server.use('*', (req, res) => res.status(404).send("Not found."));
 setInterval(() => require('http').get('http://ravn-tk.herokuapp.com'), 300000);
