@@ -13,7 +13,7 @@ server.get('/:path', (req, res) => {
   const path = req.params.path;
   const redirect = redirects[path];
   if (redirect) res.status(200).redirect(redirect);
-  else res.status(404).send("Not found.");
+  else res.status(200).redirect('https://ravencode.live/' + path)
 });
 
 server.get('/', (req, res) => res.status(200).send('OK'));
