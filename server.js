@@ -8,6 +8,10 @@ server.get('/favicon.ico', (req, res) => res.status(200).redirect('https://cdn.r
 server.listen(process.env.PORT || 8000, () => console.log("Server started."));
 process.on('uncaughtException', console.log);
 
+server.use('*', (req, res) => {
+  if (req.headers.host !== 'ravn.tk') return res.redirect('https://ravn.tk');
+});
+
 const redirects = require('./redirects.json');
 server.get('/:path', (req, res) => {
   const path = req.params.path;
