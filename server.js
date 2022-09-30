@@ -12,11 +12,7 @@ server.use('*', (req, res, next) => {
   if (req.headers.host !== 'ravn.tk') return res.redirect('https://ravn.tk');
   else next();
 });
-
-server.get('/ping', (req, res) => {
-  const time = new Date().getTime();
-  return res.status(200).json({ ping: (new Date().getTime() - time) + 'ms' });
-});
+server.get('/ping', (req, res) => res.status(200).send('OK'));
 
 const redirects = require('./redirects.json');
 server.get('/:path', (req, res) => {
