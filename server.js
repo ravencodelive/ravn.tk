@@ -14,8 +14,8 @@ server.use('*', (req, res, next) => {
 });
 
 server.get('/ping', (req, res) => {
-  const time = Date.now().getTime();
-  return res.status(200).json({ ping: (Date.now().getTime() - time) + 'ms' });
+  const time = new Date().getTime();
+  return res.status(200).json({ ping: (new Date().getTime() - time) + 'ms' });
 });
 
 const redirects = require('./redirects.json');
