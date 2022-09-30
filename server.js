@@ -13,7 +13,10 @@ server.use('*', (req, res, next) => {
   else next();
 });
 
-server.get('/ping', (req, res) => res.status(200).send('OK'));
+server.get('/ping', (req, res) => {
+  const time = Date.now().getTime();
+  return res.status(200).json({ ping: (Date.now().getTime() - time) + 'ms' });
+});
 
 const redirects = require('./redirects.json');
 server.get('/:path', (req, res) => {
